@@ -1,15 +1,8 @@
 import { useMemo, useRef, useState } from "react";
-import {
-  Button,
-  Col,
-  Form,
-  FormLabel,
-  Modal,
-  Row,
-  Stack,
-} from "react-bootstrap";
-
+import { Col, Form, FormLabel, Row, Stack } from "react-bootstrap";
 import { FiEdit, FiSearch } from "react-icons/fi";
+
+import Button from "../Components/Button";
 
 import { Link } from "react-router-dom";
 import Select from "react-select";
@@ -26,6 +19,7 @@ function Home() {
   const [selecteTags, setSelecteTags] = useState<Tag[]>([]);
   const [Title, setTitle] = useState("");
 
+  // to display note base on the current user input
   const filteredNote = useMemo(() => {
     return Notes.filter((note) => {
       return (
@@ -48,28 +42,6 @@ function Home() {
   return (
     <>
       <ModalComp toogle={toogle} setToogle={handleToogle} ref={refModal} />
-
-      <Row className="align-item-center my-4 header">
-        <Col className="d-flex flex-column align-items-start ">
-          <h1 className="mb-0">NTA</h1>
-          <span className="text-small mbt-0">Note Taking App</span>
-        </Col>
-        <Col xs="auto">
-          <Stack direction="horizontal" gap={2}>
-            <Link to="/new">
-              <Button
-                variant="primary"
-                className="d-flex align-items-center justify-content-between"
-              >
-                Create <FiEdit />
-              </Button>
-            </Link>
-            <Button onClick={handleToogle} variant="outline-secondary">
-              Edit Tags
-            </Button>
-          </Stack>
-        </Col>
-      </Row>
       <Row>
         <Form>
           <Row>
@@ -86,6 +58,7 @@ function Home() {
             <Col>
               <Form.Group>
                 <FormLabel>Tags : </FormLabel>
+                {/* the select multiple selct input */}
                 <Select
                   isMulti
                   onChange={(newvalue) => {

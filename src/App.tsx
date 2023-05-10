@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import NoteItem from "./Components/NoteItem";
@@ -6,22 +5,24 @@ import EditNote from "./Pages/EditNote";
 import Home from "./Pages/Home";
 import NewNote from "./Pages/NewNote";
 import NoteItemLayout from "./Pages/NoteItemLayout";
+import Layout from "./Components/Layout";
 
 function App() {
   return (
-    <Container>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<NewNote />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
 
-        <Route path="/:id" element={<NoteItemLayout />}>
+        <Route path="notes/new" element={<NewNote />} />
+
+        <Route path="notes/:id" element={<NoteItemLayout />}>
           <Route index element={<NoteItem />} />
           <Route path="edit" element={<EditNote />} />
         </Route>
 
-        <Route path="*" element={<Navigate to={"/"} />} />
-      </Routes>
-    </Container>
+        <Route path="*" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 

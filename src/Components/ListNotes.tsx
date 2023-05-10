@@ -1,12 +1,26 @@
 import { Col, Row } from "react-bootstrap";
 import { NoteType } from "../Context/StateContext";
 import SimplifiedNoteItem from "./SimplifiedNoteItem";
+
+import styles from "../Note.module.css";
+
 type NoteListProps = {
   NotesList: NoteType[];
 };
 
 function ListNotes({ NotesList }: NoteListProps) {
-  if (NotesList.length == 0) return <p>click the button to add a new Note</p>;
+  if (NotesList.length <= 0)
+    return (
+      <div className={`${styles.emptyNotes}`}>
+        <img
+          width={"300px"}
+          height={"300px"}
+          src="/emptyState.svg"
+          alt="Notes empty"
+        />
+        <p>Click the button to add a new Note</p>
+      </div>
+    );
   return (
     <>
       <Row className="mt-4 text-center">
