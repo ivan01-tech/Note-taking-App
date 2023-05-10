@@ -8,7 +8,7 @@ function Layout({}: Props) {
   return (
     <div className={`${styles.rootElement}`}>
       <Header />
-      <Outlet />;
+      <Outlet />
     </div>
   );
 }

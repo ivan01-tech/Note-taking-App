@@ -9,6 +9,7 @@ import Select from "react-select";
 import ListNotes from "../Components/ListNotes";
 import { Tag, useContextState } from "../Context/StateContext";
 import ModalComp from "../Components/Modal";
+import Input from "../Components/Input";
 
 function Home() {
   const refModal = useRef<HTMLDivElement>(null);

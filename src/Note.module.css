@@ -58,3 +58,20 @@ a {
 .red {
   background-color: rgb(150, 23, 23);
 }
+
+.input,
+.textArea {
+  display: block;
+  width: 100%;
+  padding: 0.35rem;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  outline: none;
+}
+
+.input:focus,
+.input:active,
+.textArea:focus,
+.textArea:active {
+  border: 2px solid var(--primary-color);
+}

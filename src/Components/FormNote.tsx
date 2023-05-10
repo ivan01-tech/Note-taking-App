@@ -1,16 +1,14 @@
 import React, { useEffect, useRef } from "react";
-
 import { GiCancel } from "react-icons/gi";
 import { FiEdit } from "react-icons/fi";
-
 import { MultiValue } from "react-select";
 import Creatable from "react-select/creatable";
-
-import { Col, FormLabel, Form, Row, Stack, Button } from "react-bootstrap";
-
+import { Col, FormLabel, Form, Row, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 import { FormNoteType, Tag, useContextState } from "../Context/StateContext";
+import Button from "./Button";
+import styles from "../Note.module.css";
+import Input, { TextArea } from "./Input";
 
 export type FormNoteProps = {
   onSubmit: (data: FormNoteType, id?: string) => void;
@@ -36,9 +34,10 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
         })) || []
       );
   }, []);
-
+  // submit handler to create or update note
   const handleSubmit = function (e: React.FormEvent) {
     e.preventDefault();
+    console.log(titleRef, bodyRef);
     if (id) {
       onSubmit(
         {
@@ -79,10 +78,11 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
           <Col>
             <Form.Group>
               <FormLabel>Title : </FormLabel>
-              <Form.Control
+              <Input
+                className={`${styles.input}`}
                 defaultValue={Note?.title || ""}
                 required
-                ref={titleRef}
+                titleRef={titleRef}
               />
             </Form.Group>
           </Col>
@@ -106,18 +106,18 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
         </Row>
         <Row>
           <Form.Label>Body</Form.Label>
-          <Form.Control
-            as="textarea"
+          <TextArea
             placeholder="Leave a comment here"
-            style={{ height: "300px" }}
-            ref={bodyRef}
+            style={{ height: "250px" }}
+            bodyRef={bodyRef}
             required
             defaultValue={Note?.body}
+            className={`${styles.textArea}`}
           />
         </Row>
         <Stack direction="horizontal" gap={3}>
-          <Button type="submit" variant="success" className=" ms-auto">
-            {!id ? "Create Note " : "Update Note "}
+          <Button type="submit" onClick={handleSubmit}>
+            <span>{!id ? "Create Note " : "Update Note "}</span>
             <FiEdit />
           </Button>
           <div className="vr" />
@@ -125,10 +125,9 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
             onClick={() => {
               navigate("/");
             }}
-            className="d-flex align-items-center justify-content-between"
-            variant="outline-danger"
+            color="red"
           >
-            Cancel
+            <span>Cancel</span>
             <GiCancel />
           </Button>
         </Stack>
