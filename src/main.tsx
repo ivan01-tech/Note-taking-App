@@ -4,7 +4,6 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProviderState from "./Context/StateContext";
-import "./App.css";
 import App from "./App";
 import ModalContextProvider from "./Context/ModalContext";
 

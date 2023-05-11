@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
 import NoteItem from "./Components/NoteItem";
 import EditNote from "./Pages/EditNote";
 import Home from "./Pages/Home";
