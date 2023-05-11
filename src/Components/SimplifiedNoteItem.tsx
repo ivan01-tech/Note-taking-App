@@ -12,7 +12,7 @@ function SimplifiedNoteItem({ tags, title, id }: SimplifeidNoteProps) {
   return (
     <Card
       as={Link}
-      to={`/${id}`}
+      to={`/notes/${id}`}
       className={`h-100 text-reset text-decoration-none   ${styles.card} `}
     >
       <Card.Body>

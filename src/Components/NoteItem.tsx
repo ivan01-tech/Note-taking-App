@@ -35,7 +35,7 @@ function NoteItem() {
         </Col>
         <Col xs="auto">
           <Stack direction="horizontal" gap={2}>
-            <Link to={`/${id}/edit`}>
+            <Link to={`/notes/${id}/edit`}>
               <Button variant="primary">Edit</Button>
             </Link>
             <Button

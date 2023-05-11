@@ -1,20 +1,13 @@
 import { useMemo, useRef, useState } from "react";
-import { Col, Form, FormLabel, Row, Stack } from "react-bootstrap";
-import { FiEdit, FiSearch } from "react-icons/fi";
-
-import Button from "../Components/Button";
-
-import { Link } from "react-router-dom";
+import { Col, Form, FormLabel, Row } from "react-bootstrap";
 import Select from "react-select";
 import ListNotes from "../Components/ListNotes";
 import { Tag, useContextState } from "../Context/StateContext";
 import ModalComp from "../Components/Modal";
-import Input from "../Components/Input";
 
 function Home() {
   const refModal = useRef<HTMLDivElement>(null);
 
-  const [toogle, setToogleModal] = useState(false);
   const { Notes, TagsV } = useContextState()!;
 
   const [selecteTags, setSelecteTags] = useState<Tag[]>([]);
@@ -34,15 +27,11 @@ function Home() {
     });
   }, [Title, Notes, selecteTags]);
 
-  const handleToogle = function () {
-    setToogleModal((prev) => !prev);
-  };
-
   console.log("filter = ", filteredNote);
   console.log("Selected = ", selecteTags);
   return (
     <>
-      <ModalComp toogle={toogle} setToogle={handleToogle} ref={refModal} />
+      <ModalComp ref={refModal} />
       <Row>
         <Form>
           <Row>

@@ -17,7 +17,6 @@ a {
 }
 .rootElement {
   max-width: 56rem;
-  overflow-x: hidden;
   margin: auto;
 }
 

@@ -3,7 +3,7 @@ import styles from "../Note.module.css";
 
 type Props = {
   children: string | JSX.Element | JSX.Element[] | (() => JSX.Element);
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   color?: string;
   type?: "button" | "submit" | "reset" | undefined;
 };

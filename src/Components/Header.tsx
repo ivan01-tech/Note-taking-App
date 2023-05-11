@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { FiEdit } from "react-icons/fi";
 import styles from "../Note.module.css";
+import { useModal } from "../Hooks/useModal";
 type Props = {};
 
 function Header({}: Props) {
+  const { toogleModal } = useModal()!;
+
   return (
     <>
       <Row className="align-item-center  header">
@@ -15,12 +18,12 @@ function Header({}: Props) {
         <Col xs="auto">
           <Stack direction="horizontal" gap={2}>
             <Link to="/notes/new">
-              <Button onClick={() => null} color="green">
+              <Button color="green">
                 <span>Create</span>
                 <FiEdit />
               </Button>
             </Link>
-            <Button onClick={() => null}>Edit Tags</Button>
+            <Button onClick={() => toogleModal(true)}>Edit Tags</Button>
           </Stack>
         </Col>
       </Row>
