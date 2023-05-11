@@ -8,6 +8,7 @@ import { useModal } from "../Hooks/useModal";
 type PropsType = {};
 
 const ModalComp = React.forwardRef<HTMLDivElement, PropsType>(({}, ref) => {
+  // const ModalComp = ({}: PropsType) => {
   const { toogleModal, showModals } = useModal()!;
   const [Error, setError] = useState("");
   const { TagsV, setTagsV, setNotes, Notes } = useContextState()!;

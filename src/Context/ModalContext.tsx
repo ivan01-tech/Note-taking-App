@@ -8,10 +8,18 @@ interface ModalProps {
 type Props = {
   children: string | JSX.Element | JSX.Element[] | (() => JSX.Element);
 };
+/**
+ * the modal context
+ */
 export const ModalContext = createContext<null | ModalProps>(null);
 
 const ModalContextProvider = ({ children }: Props) => {
+  // state to show or hide modal
   const [showModals, setShowModal] = useState(false);
+  /**
+   * a function which help to toogle the modals state
+   * @param value
+   */
   const toogleModal = function (value?: boolean) {
     setShowModal((prev) => (value ? value : !prev));
   };

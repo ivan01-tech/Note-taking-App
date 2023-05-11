@@ -18,10 +18,12 @@ export type FormNoteProps = {
 
 function NewNote({ onSubmit, id }: FormNoteProps) {
   const navigate = useNavigate();
+  // some ref to manage uncontrolled input
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
-
+  // state for all tags
   const { TagsV, setSelectedtag, getNoteById } = useContextState()!;
+  // to have the current note ID
   const Note = getNoteById(id);
 
   // Selected as a default value of note tag
@@ -34,6 +36,7 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
         })) || []
       );
   }, []);
+
   // submit handler to create or update note
   const handleSubmit = function (e: React.FormEvent) {
     e.preventDefault();
@@ -57,7 +60,7 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
     if (bodyRef?.current) bodyRef.current.value = "";
     navigate("/", { replace: true });
   };
-
+  // to update note's tags base on what the user have choose
   const handleSelectedChange = function (
     newValue: MultiValue<{
       value: string;
@@ -65,9 +68,6 @@ function NewNote({ onSubmit, id }: FormNoteProps) {
       __isNew__?: boolean;
     }>
   ) {
-    console.log("newValue====================");
-    console.log(newValue);
-
     setSelectedtag(newValue);
   };
 

@@ -23,7 +23,14 @@ function Header({}: Props) {
                 <FiEdit />
               </Button>
             </Link>
-            <Button onClick={() => toogleModal(true)}>Edit Tags</Button>
+            <Button
+              onClick={() => {
+                console.log("called!");
+                toogleModal(true);
+              }}
+            >
+              Edit Tags
+            </Button>
           </Stack>
         </Col>
       </Row>

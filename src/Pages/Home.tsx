@@ -6,6 +6,7 @@ import { Tag, useContextState } from "../Context/StateContext";
 import ModalComp from "../Components/Modal";
 
 function Home() {
+  // a ref to manage showing of the modal from here
   const refModal = useRef<HTMLDivElement>(null);
 
   const { Notes, TagsV } = useContextState()!;
