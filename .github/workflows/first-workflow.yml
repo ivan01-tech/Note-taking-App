@@ -4,11 +4,11 @@ on: [push]
 
 jobs:
   mainbuild:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ ubuntu-latest }}
 
     strategy: # Indentation fixée ici
       matrix:
-        node-version: [12.x]
+        node-version: [18.x]
         os: [ubuntu-latest]
 
     steps:
