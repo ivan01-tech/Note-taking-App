@@ -4,12 +4,12 @@ on: [push]
 
 jobs:
   mainbuild:
-    runs-on: ${{ ubuntu-latest }}
+    runs-on: ubuntu-latest # Spécifie que ce job doit s'exécuter sur Ubuntu
 
-    strategy: # Indentation fixée ici
+    strategy:
       matrix:
-        node-version: [18.x]
-        os: [ubuntu-latest]
+        node-version: [12.x]
+        os: [ubuntu-latest] # Spécifie Ubuntu dans la matrice
 
     steps:
       - uses: actions/checkout@v1
