@@ -10,7 +10,7 @@ function NewNote() {
 
   return (
     <>
-      <h2 className="m-4">New Note</h2>
+      <h1 className="m-4">Nouvelle Note</h1>
       <FormNote TagsV={TagsV} onSubmit={onSubmit} />
     </>
   );
